@@ -21,7 +21,7 @@ public class BulletController : MonoBehaviour
         // allows bullet to travel when spawned
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        // need to destroy bullets after a time or leaving area
+        // destroys bullet after a set time
         lifeTime -= Time.deltaTime;
         if(lifeTime <= 0)
         {
@@ -33,7 +33,7 @@ public class BulletController : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageToGive);
+            other.gameObject.GetComponent<EnemyHealthManager>().EnemyTakeDamage(damageToGive);
             Destroy(gameObject);
         }
     }
